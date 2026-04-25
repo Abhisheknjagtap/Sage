@@ -1,7 +1,5 @@
 "use client";
 
-
-import { supabase } from "@/lib/supabase";
 import { useState, useCallback, useRef } from "react";
 import type { Profile, UserPatterns } from "@/types";
 
