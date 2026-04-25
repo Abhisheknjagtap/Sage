@@ -1,0 +1,12 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/compute-patterns",
+      "schedule": "0 2 * * *"
+    },
+    {
+      "path": "/api/cron/nudge",
+      "schedule": "0 * * * *"
+    }
+  ]
+}

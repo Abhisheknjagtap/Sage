@@ -1,26 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ─── Brand Token Definitions ─── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Colors */
+  --color-background-warm: #F9F6F1;
+  --color-background-dark: #1A1814;
+  --color-text-primary: #2A2825;
+  --color-text-muted: #8C8680;
+  --color-accent: #C9915A;
+  --color-surface: #FFFFFF;
+  --color-sage: #7B9E87;
+  --color-clay: #C4846A;
+
+  /* Semantic aliases — light mode defaults */
+  --color-background: var(--color-background-warm);
+  --color-foreground: var(--color-text-primary);
+
+  /* Typography */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Dark mode overrides (class-based) ─── */
+.dark {
+  --color-background: var(--color-background-dark);
+  --color-foreground: #EDE9E3;
+  --color-surface: #24211C;
+  --color-text-muted: #6B6762;
+}
+
+/* ─── Base styles ─── */
+html {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ─── Custom scrollbar ─── */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-text-muted);
+  border-radius: 999px;
+  opacity: 0.4;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-text-muted) transparent;
+}
+
+/* ─── Text selection ─── */
+::selection {
+  background-color: rgba(201, 145, 90, 0.2);
+  color: var(--color-text-primary);
+}
+
+/* ─── Focus ring ─── */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ─── Button interactive states ─── */
+button,
+[role="button"],
+a[href] {
+  transition: opacity 0.15s ease, transform 0.1s ease;
+}
+
+button:hover:not(:disabled),
+[role="button"]:hover:not([aria-disabled="true"]) {
+  opacity: 0.85;
+}
+
+button:active:not(:disabled),
+[role="button"]:active:not([aria-disabled="true"]) {
+  transform: scale(0.97);
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ─── Shadcn CSS variable bridge ─── */
+:root {
+  --background: 40 33% 97%;
+  --foreground: 30 7% 15%;
+  --card: 0 0% 100%;
+  --card-foreground: 30 7% 15%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 30 7% 15%;
+  --primary: 28 48% 57%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 40 20% 94%;
+  --secondary-foreground: 30 7% 15%;
+  --muted: 40 15% 90%;
+  --muted-foreground: 30 5% 55%;
+  --accent: 28 48% 57%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 40 15% 88%;
+  --input: 40 15% 88%;
+  --ring: 28 48% 57%;
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: 30 8% 9%;
+  --foreground: 35 20% 92%;
+  --card: 30 8% 13%;
+  --card-foreground: 35 20% 92%;
+  --popover: 30 8% 13%;
+  --popover-foreground: 35 20% 92%;
+  --primary: 28 48% 57%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 30 8% 18%;
+  --secondary-foreground: 35 20% 92%;
+  --muted: 30 8% 18%;
+  --muted-foreground: 30 5% 45%;
+  --accent: 28 48% 57%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 62% 50%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 30 8% 20%;
+  --input: 30 8% 20%;
+  --ring: 28 48% 57%;
 }

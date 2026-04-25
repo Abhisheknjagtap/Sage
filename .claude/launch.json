@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Next.js Dev Server",
+      "runtimeExecutable": "powershell",
+      "runtimeArgs": ["-ExecutionPolicy", "Bypass", "-Command", "Set-Location 'C:\\Users\\abhis\\OneDrive\\Desktop\\Claude\\Code\\Design Thinking 3'; & 'C:\\Program Files\\nodejs\\npm.cmd' run dev"],
+      "port": 3000
+    }
+  ]
+}
