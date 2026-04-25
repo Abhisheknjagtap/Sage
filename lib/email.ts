@@ -1,6 +1,9 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY!);
+// Lazy-initialized so missing env vars don't crash the build
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY!);
+}
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://companion.app";
 const FROM_EMAIL =
@@ -69,7 +72,7 @@ export async function sendNudgeEmail(
 </html>
 `.trim();
 
-  await resend.emails.send({
+  await getResend().emails.send({
     from: FROM_EMAIL,
     to: email,
     subject: `${name}, a quiet check-in`,
